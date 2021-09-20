@@ -1,9 +1,10 @@
 """
-Name: <your name goes here – first and last>
-<ProgramName>.py
+Name: <Caleb Quattlebaum>
+lab4.py
 """
 
 from graphics import *
+from math import *
 
 
 def squares():
@@ -34,7 +35,8 @@ def squares():
     instructions.draw(win)
 
     # builds a circle
-    shape = Circle(Point(50, 50), 20)
+    #shape = Circle(Point(50, 50), 20)
+    shape = Rectangle(Point(50, 50), Point(100, 100))
     shape.setOutline("red")
     shape.setFill("red")
     shape.draw(win)
@@ -48,8 +50,12 @@ def squares():
         # point where the user clicked
         dx = p.getX() - c.getX()
         dy = p.getY() - c.getY()
-        shape.move(dx, dy)
-
+        acc = shape.clone()
+        acc.draw(win)
+        acc.move(dx, dy)
+    closer = Text(inst_pt, "Click again to quit")
+    instructions.undraw()
+    closer.draw(win)
     win.getMouse()
     win.close()
 
@@ -62,14 +68,92 @@ def rectangle():
          Print the perimeter and area of the rectangle.
     Formulas: area = (length)(width)   and    perimeter = 2(length+width)
     """
-    pass
 
+    width = 400
+    height = 400
+    win = GraphWin("Lab 4", width, height)
+    text_start = Point(width / 2, height - 10)
+    message = Text(text_start, "Click two points on the screen")
+    message.draw(win)
+
+    p1 = win.getMouse()
+    p2 = win.getMouse()
+
+    rec = Rectangle(p1, p2)
+    rec.setFill("blue")
+    rec.setOutline("yellow")
+    rec.draw(win)
+
+    x1 = p1.getX()
+    y1 = p1.getY()
+    x2 = p2.getX()
+    y2 = p2.getY()
+
+    perimeter = abs(x2 - x1) + abs(y2 - y1)
+    area = abs(x2 - x1) * abs(y2 - y1)
+    perimeter_txt_start = Point(width / 2, 15)
+    perimeter_txt = Text(perimeter_txt_start, ("Perimeter: ", perimeter))
+    area_txt_start = Point(width / 2, 35)
+    area_txt = Text(area_txt_start, ("Area: ", area))
+    perimeter_txt.draw(win)
+    area_txt.draw(win)
+
+    closer = Text(text_start, "Click again to quit")
+    message.undraw()
+    closer.draw(win)
+    win.getMouse()
+    win.close()
+
+def circle():
+    width = 400
+    height = 400
+    win = GraphWin("Lab 4", width, height)
+    text_start = Point(width / 2, height - 10)
+    message = Text(text_start, "Click two points on the screen")
+    message.draw(win)
+
+    p1 = win.getMouse()
+    p2 = win.getMouse()
+    x1 = p1.getX()
+    y1 = p1.getY()
+    x2 = p2.getX()
+    y2 = p2.getY()
+    x = x2 - x1
+    y = y2 - y1
+
+    radius = sqrt(x ** 2 + y ** 2)
+    rad_text_start = Point(width / 2, 20)
+    rad_text = Text(rad_text_start, ("Radius: ", radius))
+    rad_text.draw(win)
+
+    circ = Circle(p1, radius)
+    circ.setFill("blue")
+    circ.draw(win)
+
+
+    closer = Text(text_start, "Click again to quit")
+    message.undraw()
+    closer.draw(win)
+    win.getMouse()
+    win.close()
+
+def pi2():
+    n = eval(input("How many terms are in this series? "))
+    acc = 0
+    for x in range(n):
+        num = 4
+        denom = 1 + 2 * x
+        frac = (num / denom) * ((-1) ** x)
+        acc = acc + frac
+
+    print("Your number is: ", acc)
+    print("Deviation from pi: ", pi - acc)
 
 def main():
     squares()
-    # rectangle()
-    # circle()
-    # pi2()
+    rectangle()
+    circle()
+    pi2()
 
 
 main()
