@@ -2,7 +2,8 @@
 Name: Caleb Quattlebaum
 greeting.py
 
-Purpose:
+Purpose: create a Valentine's Day graphics card with a heart that gets an arrow
+         shot through it
 
 Certification of Authenticity:
 I certify that this assignment is entirely my own work.
