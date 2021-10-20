@@ -91,6 +91,6 @@ def main():
     # get mouse to close
     win.getMouse()
 
-# run program
+# run main()
 if __name__ == "__main__":
     main()
