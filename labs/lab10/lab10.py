@@ -42,7 +42,7 @@ def game_won(positions):
             return "O wins"
 
 def game_over(positions, turn_count):
-    if (game_won(positions) == "X wins" or game_won(positions) == "O wins") or (turn_count > 3):
+    if (game_won(positions) == "X wins" or game_won(positions) == "O wins") or (turn_count > 8):
         return True
     else:
         return False
@@ -56,6 +56,9 @@ def play_game():
         if legal_spot(positions, spot):
             place_spot(positions, spot, "X")
         display_board(positions)
+        if game_won(positions):
+            print(game_won(positions))
+        turn_count = turn_count + 1
         spot = eval(input("O's turn "))
         if legal_spot(positions, spot):
             place_spot(positions, spot, "O")
