@@ -65,8 +65,6 @@ def play():
             print("Sorry, you lose, the answer was " + answer)
             break
 
-
-
 def main():
     play()
 
