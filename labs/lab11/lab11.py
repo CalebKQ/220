@@ -59,6 +59,7 @@ def play():
             incorrect_guesses.append(guess)
         all_guesses.append(guess)
         if win(progress, answer):
+            print(answer)
             print("Congratulations, you won!")
             break
         elif len(incorrect_guesses) >= 7:
