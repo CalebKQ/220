@@ -53,9 +53,11 @@ def star_find(filename):
     signals = file.read().split()
     found = []
     acc = 0
-    while (len(found) <= 5) and (acc + 1 < len(signals)):
-        if 4000 <= int(signals[acc]) <= 5000:
-            found.append(signals[acc])
+    for i in range(len(signals)):
+        if 4000 <= int(signals[i]) <= 5000:
+            found.append(signals[i])
+        if len(found) >= 5:
+            break
         acc += 1
     print(len(found), " values were found.")
     if len(found) >= 5:
